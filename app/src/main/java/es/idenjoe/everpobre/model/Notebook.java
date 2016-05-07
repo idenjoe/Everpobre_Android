@@ -4,13 +4,19 @@ package es.idenjoe.everpobre.model;
  * Created by idenjoe on 7/5/16.
  */
 public class Notebook {
+    public static final String DEFAULT_NAME = "John Doe";
     private int id;
     private String name;
 
 
     public Notebook(int id, String name) {
+        if (name == null || name.isEmpty()) {
+            this.name = DEFAULT_NAME;
+        }else{
+            this.name = name;
+        }
+
         this.id = id;
-        this.name = name;
     }
 
     private Notebook(){
