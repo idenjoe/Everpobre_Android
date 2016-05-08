@@ -19,11 +19,23 @@ public class Notebooks {
         return myNotebooks;
     }
 
-    private void add(Notebook notebook) {
-        getNotebooks().add(notebook);
+    private Notebooks(){
     }
 
-    private Notebooks(){
+    public int size(){
+        return getNotebooks().size();
+    }
+
+    public Notebook get(int index){
+        return getNotebooks().get(index);
+    }
+
+    public void remove(Notebook notebook){
+        getNotebooks().remove(notebook);
+    }
+
+    private void add(Notebook notebook) {
+        getNotebooks().add(notebook);
     }
 
     public List<Notebook> getNotebooks(){
