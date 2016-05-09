@@ -5,6 +5,8 @@ import android.test.AndroidTestCase;
 import java.util.Arrays;
 import java.util.List;
 
+import es.idenjoe.everpobre.model.db.DBHelper;
+
 import static org.junit.Assert.*;
 
 /**
