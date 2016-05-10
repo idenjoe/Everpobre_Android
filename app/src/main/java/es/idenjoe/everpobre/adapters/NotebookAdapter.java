@@ -1,6 +1,7 @@
 package es.idenjoe.everpobre.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,12 @@ import es.idenjoe.everpobre.views.NotebookRowViewHolder;
  * Created by idenjoe on 10/5/16.
  */
 public class NotebookAdapter extends RecyclerView.Adapter<NotebookRowViewHolder> {
+
+    public interface OnElementClick<Notebook> {
+        public void clickedOn(Notebook notebook, int position);
+    }
+
+    private OnElementClick<Notebook> listener;
 
     private LayoutInflater layoutInflater;
     private Notebooks notebooks;
@@ -32,8 +39,24 @@ public class NotebookAdapter extends RecyclerView.Adapter<NotebookRowViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(NotebookRowViewHolder holder, int position) {
-        Notebook notebook = notebooks.get(position);
+    public void onBindViewHolder(NotebookRowViewHolder holder, final int position) {
+        final Notebook notebook = notebooks.get(position);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null){
+                    listener.clickedOn(notebook, position);
+                }
+            }
+        });
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                return false;
+            }
+        });
 
         holder.setNotebookName(notebook.getName());
     }
@@ -41,5 +64,9 @@ public class NotebookAdapter extends RecyclerView.Adapter<NotebookRowViewHolder>
     @Override
     public int getItemCount() {
         return notebooks.size();
+    }
+
+    public void setOnElementClickListener(@NonNull final OnElementClick<Notebook> listener){
+        this.listener = listener;
     }
 }

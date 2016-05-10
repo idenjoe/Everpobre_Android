@@ -54,6 +54,10 @@ public class NotebookDAO {
 		return numberOfRowsUpdated;
 	}
 
+	public int update (@NonNull final Notebook notebook){
+		return update(notebook.getId(), notebook);
+	}
+
 	public void delete(long id) {
 		if (id == INVALID_ID_DELETE_ALL_RECORDS) {
 			db.getWritableDatabase().delete(DBConstants.TABLE_NOTEBOOK,  null, null);

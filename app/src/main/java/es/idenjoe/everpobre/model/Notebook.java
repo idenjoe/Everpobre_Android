@@ -1,9 +1,12 @@
 package es.idenjoe.everpobre.model;
 
+
+import java.io.Serializable;
+
 /**
  * Created by idenjoe on 7/5/16.
  */
-public class Notebook {
+public class Notebook implements Serializable {
     public static final String DEFAULT_NAME = "John Doe";
     private long id;
     private String name;
