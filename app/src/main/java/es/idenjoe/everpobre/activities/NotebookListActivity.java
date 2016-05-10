@@ -1,10 +1,13 @@
 package es.idenjoe.everpobre.activities;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
 import es.idenjoe.everpobre.R;
+import es.idenjoe.everpobre.fragments.NotebooksFragment;
 
 public class NotebookListActivity extends AppCompatActivity {
 
@@ -16,5 +19,16 @@ public class NotebookListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notebook_list);
 
         Log.d(TAG,"Hello from Notebook List");
+
+        FragmentManager fm =  getSupportFragmentManager();
+
+
+        if (fm != null){
+            NotebooksFragment notebooksFragment = new NotebooksFragment();
+
+            fm.beginTransaction()
+                    .add(R.id.activity_notebook_fragment_container, notebooksFragment)
+                    .commit();
+        }
     }
 }
