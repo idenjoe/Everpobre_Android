@@ -5,5 +5,5 @@
     <dimen name="notebook_icon_size">50dp</dimen>
     <dimen name="notebook_icon_margintop">10dp</dimen>
     <dimen name="notebook_textview_margintop">10dp</dimen>
-    <dimen name="row_notebook_height">200dp</dimen>
+    <dimen name="row_notebook_height">100dp</dimen>
 </resources>

@@ -46,6 +46,10 @@ public class NotebooksFragment extends Fragment {
         return view;
     }
 
+    public void refreshUI(){
+        setupAdapter();
+    }
+
     private void setupAdapter() {
         notebooksRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         NotebookDAO notebookDAO = new NotebookDAO();

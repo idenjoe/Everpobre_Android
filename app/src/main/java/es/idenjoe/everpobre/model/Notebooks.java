@@ -10,11 +10,17 @@ public class Notebooks {
     List<Notebook> notebooks;
 
     public static Notebooks createNotebooks(List<Notebook> notebooks){
-        Notebooks myNotebooks = new Notebooks();
+        Notebooks myNotebooks = createNotebooks();
 
         for (Notebook n: notebooks){
             myNotebooks.add(n);
         }
+
+        return myNotebooks;
+    }
+
+    public static Notebooks createNotebooks(){
+        Notebooks myNotebooks = new Notebooks();
 
         return myNotebooks;
     }
@@ -34,7 +40,7 @@ public class Notebooks {
         getNotebooks().remove(notebook);
     }
 
-    private void add(Notebook notebook) {
+    public void add(Notebook notebook) {
         getNotebooks().add(notebook);
     }
 

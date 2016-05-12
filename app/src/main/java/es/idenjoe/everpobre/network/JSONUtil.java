@@ -1,14 +1,18 @@
-package es.idenjoe.everpobre;
+package es.idenjoe.everpobre.network;
+
+import android.util.Log;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.json.JSONArray;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.json.JSONObject;
-
-import android.util.Log;
 
 public class JSONUtil {
 	/**
@@ -16,9 +20,9 @@ public class JSONUtil {
 	 * @param httpRequest
 	 * @return
 	 */
-	public static JSONObject getJSONFromHttpRequest(String httpRequest) {
+	public static JSONArray getJSONFromHttpRequest(String httpRequest) {
 		BufferedReader in = null;
-		JSONObject jsonObject = null;
+		JSONArray jsonArray = null;
 		try {
 		    
 			HttpClient client = new DefaultHttpClient();
@@ -41,9 +45,8 @@ public class JSONUtil {
 			in.close();
 
 			String page = sb.toString();
-			// System.out.println(page);
 
-			jsonObject = new JSONObject(page);
+			jsonArray = new JSONArray(page);
 		} catch (org.apache.http.conn.HttpHostConnectException e) {
 			Log.e("ERROR", e.getMessage());
 			Log.e("ERROR", "Error connecting to: " + httpRequest);
@@ -60,6 +63,6 @@ public class JSONUtil {
 				}
 			}
 		}
-		return jsonObject;
+		return jsonArray;
 	}
 }
